@@ -130,7 +130,7 @@ export default {
               console.log("CHANGE PRIORITY WITHIN LIST");
               let a = this.dragState.reorderSchoolInListState.schoolStartIdx;
               let b = this.dragState.reorderSchoolInListState.schoolOverIdx;
-              let targList = this.myShortlists[i].schools;
+              let targList = this.myShortlists[i].school_ids;
               targList[b] = targList.splice(a, 1, targList[b])[0];
 
               this.dragState.reorderSchoolInListState.schoolStartIdx =
@@ -160,13 +160,13 @@ export default {
           } else {
             // assign it;
             console.log("ASSIGN SCHOOL");
-            if (this.myShortlists[listIdx].schools.length < 4) {
-              this.myShortlists[listIdx].schools.push(
+            if (this.myShortlists[listIdx].school.length < 4) {
+              this.myShortlists[listIdx].school.push(
                 this.dragState.categorizeState.schoolData
               );
               this.removeTopCard();
               // TODO set current_accepted in db
-              this.saveList(listIdx, this.myShortlists[listIdx].schools);
+              this.saveList(listIdx, this.myShortlists[listIdx].school_ids);
             } else {
               alert("List is full");
             }
